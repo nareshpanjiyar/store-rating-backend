@@ -27,6 +27,7 @@ class OwnerService {
 
     const store = await prisma.store.findUnique({
       where: {
+        ownerId: ownerId,
         id: selectedStoreId,
       },
 
