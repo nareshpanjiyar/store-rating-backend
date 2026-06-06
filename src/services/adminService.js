@@ -143,6 +143,14 @@ class AdminService {
 
       include: {
         ratings: true,
+
+        owner: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
       },
     });
 
@@ -160,6 +168,13 @@ class AdminService {
         email: store.email,
         address: store.address,
         rating: avg,
+
+        owner: store.owner
+          ? {
+              name: store.owner.name,
+              email: store.owner.email,
+            }
+          : null,
       };
     });
   }
